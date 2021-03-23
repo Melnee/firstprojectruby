@@ -39,4 +39,8 @@
 yarn-debug.log*
 .yarn-integrity
 
-settings.json
+#Ignore Heroku local environment variable file
+settings.json.env
+
+#Ignore VSCode workspace settings to make blue
+.vscode/settings.json
