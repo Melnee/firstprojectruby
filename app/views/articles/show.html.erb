@@ -1,6 +1,10 @@
-<p> Title: <%= @article.title%></p>
-<p> Description: <%= @article.description%></p>
+<div class="container">
+    <%= render 'layouts/messages'%><br/>
 
-<%= link_to 'Edit', edit_article_path(@article) %> <br/>
-<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %> <br/>
-<%= link_to 'Return to all articles', articles_path %>
+    <p> Title: <%= @article.title%></p>
+    <p> Description: <%= @article.description%></p>
+
+    <%= link_to 'Edit', edit_article_path(@article) %> <br/>
+    <%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %> <br/>
+    <%= link_to 'Return to all articles', articles_path %>
+</div>
