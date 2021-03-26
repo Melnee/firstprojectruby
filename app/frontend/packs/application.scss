@@ -1,6 +1,53 @@
-h1 {  
-    text-decoration: underline;  
-  }  
-  
-  // Import Bootstrap v5  
-  @import "~bootstrap/scss/bootstrap";  
+// Import Bootstrap v5  
+@import "~bootstrap/scss/bootstrap";  
+
+
+.navbar {
+    background-color: black !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+#logo {
+    float: left;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+.jumbotron {
+    padding: 66px;
+    background-image: url('../images/typewriter.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 425px;
+}
+
+.display-4{
+    padding-top: 66px;
+}
+
+#home-container{
+    margin-top: 25px;
+}
+
+html,
+body {
+  height: 100%;
+
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: #c2c5c8 !important;
+
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
