@@ -9,9 +9,11 @@
             <li class="nav-item">
               <%= link_to "All Articles", articles_path, class:"nav-link active" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "New Article", new_article_path, class:"nav-link active" %>
-            </li>
+            <% if logged_in? %>
+              <li class="nav-item">
+                <%= link_to "New Article", new_article_path, class:"nav-link active" %>
+              </li>
+            <%end%>
             <li class="nav-item">
               <%= link_to "Bloggers", users_path, class: "nav-link"%>
             </li>
@@ -20,7 +22,7 @@
                 <%= link_to "Logout", logout_path, method: :delete, class: "nav-link"%>
               </li>
               <li class="nav-item">
-                <%= link_to current_user.username, user_path(current_user), class: "nav-link"%>
+                <%= link_to "#{current_user.username}'s profile", user_path(current_user), class: "nav-link"%>
               </li>
             <% else %>
               <li class="nav-item">
