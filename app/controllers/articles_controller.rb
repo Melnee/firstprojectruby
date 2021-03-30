@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   #do this action before doing only these four methods where it's required
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  # call the require user method from application controller except for the show and index methods
+  before_action :require_user, except: [:show, :index]
+  #call the require same user method only for for edit update and destroy actions
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def show
     @article
@@ -13,6 +17,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    #use the helper method from application_helper
+    @article.user = current_user
     if @article.save
       flash[:notice] = "Article successfully created!"
       redirect_to @article
@@ -55,4 +61,11 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :description)
   end
 
+  #require the same user as the author in order to edit or delete
+  def require_same_user
+    if current_user != @article.user
+      flash[:alert] = "You can only edit or delete your own article"
+      redirect_to @article
+    end
+  end
 end
