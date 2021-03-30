@@ -16,7 +16,7 @@
                     <%= f.password_field :password, rows: 10, class: "form-control shadow rounded", placeholder: "password"%><br/>
                 </div> <br/>
                 <div class="form-group d-grid gap-2 col-2 mx-auto">
-                    <%= f.submit "Sign up", class: "btn btn-outline-light btn-lg" %>
+                    <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %>                
                 </div><br/>          
             <%end%>
 
