@@ -16,4 +16,14 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
+    #create a method to block not logged in users from doing certain things
+    def require_user
+        #if not logged in 
+        if !logged_in?
+            flash[:alert] = "You must be logged in to perform that action"
+            #then redirect them away
+            redirect_to login_path
+        end
+    end
+
 end
