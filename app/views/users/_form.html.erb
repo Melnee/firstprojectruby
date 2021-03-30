@@ -1,22 +1,27 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <%= render 'shared/errors', obj: @user %>
+            <%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+                <div class = "form-group row">
+                    <%= f.label :username, class: "col-2 col-form-label text-light" %><br/>
+                    <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Enter a username" %><br/>
+                </div>
+                <div class="form-group row">
+                    <%= f.label :email, class: "col-2 col-form-label text-light"%><br/>
+                    <%= f.email_field :email, rows: 10, class: "form-control shadow rounded", placeholder: "email"%><br/>
+                </div>
+                <div class="form-group row">
+                    <%= f.label :password, class: "col-2 col-form-label text-light"%><br/>
+                    <%= f.password_field :password, rows: 10, class: "form-control shadow rounded", placeholder: "password"%><br/>
+                </div> <br/>
+                <div class="form-group d-grid gap-2 col-2 mx-auto">
+                    <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %>                
+                </div><br/>          
+            <%end%>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+            <%= link_to "[ Cancel and return to Home ]", articles_path, class: "row justify-content-center text-decoration-none"%>
+        </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

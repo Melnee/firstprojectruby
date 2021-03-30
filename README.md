@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# firstprojectruby
+First ruby project
+=======
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +26,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+>>>>>>> dev
