@@ -14,6 +14,7 @@ class User<ApplicationRecord
                 uniqueness: {case_sensitive: false},
                 format: {with: VALID_EMAIL_REGEX}
 
-    has_many :articles
+    #dependent: destroy means that if a user is deleted, all associated articles will be destroyed as well
+    has_many :articles, dependent: :destroy
     has_secure_password
 end

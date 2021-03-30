@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   #when userscontroller gets activated, before doing any action, call the private set_user method
-  #but only for the show edit and update methods
-  before_action :set_user, only: [:show, :edit, :update]
+  #but only for the show edit destroy and update methods
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   #call the require user method from application controller before the edit and update to prevent users from editing other peoples profiles
   before_action :require_user, only: [:edit, :update]
 
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -40,6 +40,14 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page], per_page: 2)
+  end
+
+  def destroy
+    @user.destroy
+    #make sure to log user out of session or else your application will throw an error
+    session[:user_id] = nil
+    flash[:notice] = "Account and all associatd articles successfully deleted"
+    redirect_to articles_path
   end
 
 
