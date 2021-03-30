@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   #when userscontroller gets activated, before doing any action, call the private set_user method
   #but only for the show edit and update methods
   before_action :set_user, only: [:show, :edit, :update]
-  # GET /users/new
+  #call the require user method from application controller before the edit and update to prevent users from editing other peoples profiles
+  before_action :require_user, only: [:edit, :update]
+
+  before_action :require_same_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -48,5 +52,13 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+  def require_same_user
+    if current_user != @user
+      flash[:alert] = "You can only edit your own account."
+      redirect_to @user
+    end
+  end
+    
 
 end
