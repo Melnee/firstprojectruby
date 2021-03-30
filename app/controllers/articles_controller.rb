@@ -13,6 +13,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    #use the helper method from application_helper
+    @article.user = current_user
     if @article.save
       flash[:notice] = "Article successfully created!"
       redirect_to @article
