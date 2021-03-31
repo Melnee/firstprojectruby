@@ -1,5 +1,6 @@
 <% flash.each do |name, msg|%>
-    <div class="alert alert-success alert-dismissible fade in show" role="alert">
+    <%# if the name of the message object passed in is notice, do success (green), if not, do danger %>
+     <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
         <div style = "display: flex; justify-content: space-between">
             <h2 class="alert-heading">
                 <%= msg%>
