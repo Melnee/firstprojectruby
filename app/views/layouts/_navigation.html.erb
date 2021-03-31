@@ -22,7 +22,11 @@
                 <%= link_to "Logout", logout_path, method: :delete, class: "nav-link"%>
               </li>
               <li class="nav-item">
-                <%= link_to "#{current_user.username}'s profile", user_path(current_user), class: "nav-link"%>
+                <%if current_user.admin?%>
+                  <%= link_to "(Admin) #{current_user.username}'s Profile", user_path(current_user), class: "nav-link"%>
+                <%else%>
+                  <%= link_to "#{current_user.username}'s Profile", user_path(current_user), class: "nav-link"%>
+                <%end%>
               </li>
               <li class="nav-item">
                 <%= link_to "Delete Profile", user_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "nav-link text-danger"%>
