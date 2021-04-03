@@ -15,6 +15,14 @@
               </li>
             <%end%>
             <li class="nav-item">
+              <%= link_to "View Categories", categories_path, class:"nav-link active" %>
+            </li>
+            <% if logged_in? && current_user.admin?%>
+              <li class="nav-item">
+                <%= link_to "Create New Category", new_category_path, class:"nav-link active" %>
+              </li>
+            <%end%>
+            <li class="nav-item">
               <%= link_to "Bloggers", users_path, class: "nav-link"%>
             </li>
             <% if logged_in? %>
