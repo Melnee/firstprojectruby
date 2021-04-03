@@ -23,6 +23,8 @@ gem 'bcrypt', '~> 3.1.7'
 ## Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '3.3.0'
 # gem 'will_paginate-bootstrap'
+#rexml
+gem 'rexml'
 
 
 #Rack Timeout to prevent webserver from spending time working on a request that takes longer than 30 seconds
@@ -58,6 +60,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  #minitest
+  gem 'minitest'
+  gem 'minitest-reporters'
 end
 
 group :production do
