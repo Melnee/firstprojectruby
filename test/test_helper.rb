@@ -23,5 +23,13 @@ class ActiveSupport::TestCase
   # order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+
+  #custom helper methods by melnee from tutorial:
+
+  #helper method sign_in to sign in as admin in the categories controller test.rb file
+  #you can reference user.email, but password has to actually be typed out, otherwise you'll get the hash, and that's not the password
+  def sign_in_as(user)
+    #go to the post login path and insert the session params to login
+    post login_path, params: { session: {email: user.email, password: "password" }}
+  end
 end
