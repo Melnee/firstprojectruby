@@ -11,6 +11,12 @@
                     <%= f.label :description, class: "col-2 col-form-label text-light"%><br/>
                     <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of Article"%><br/>
                 </div> <br/>
+                <div class="form-group row">
+                    <%= f.label :category, class: "col-2 col-form-label text-light"%><br/>
+                    <%# Create a select form with all the category id's from all Categories, passing in the id and names %>
+                    <%= f.collection_select(:category_ids, Category.all, :id, :name, 
+                    { prompt: "Make your selection from the list below ctrl click to select multiple (can be empty)"}, { multiple: true, size: 3, class: "form-select shadow rounded"})%>
+                </div> <br/>
                 <div class="form-group d-grid gap-2 col-2 mx-auto">
                     <%= f.submit class: "btn btn-outline-light btn-lg" %>
                 </div><br/>          
