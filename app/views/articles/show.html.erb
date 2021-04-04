@@ -7,7 +7,15 @@
                 </h2>
                 <div class="card text-center shadow mb-5 bg-white rounded">
                     <div class="card-header text-light fst-italic bg-primary">
-                        By Melanie Neilan
+                        by <%= @article.user.username if @article.user%>
+                        <%= link_to gravatar_for(@article.user), user_path(@article.user)%>
+                        <%# now display some categories %>
+                        <% if @article.categories.any? %>
+                            <%# ruby shortcut below, for each category here, render a partial %>
+                            <%# this is based on the asumption that there is a category partial %>
+                            <%# additionally, it will feed a singular object called category to the partial for the partial to work with and render %>
+                            <div class= "mt-2"><%= render @article.categories %></div>
+                        <% end %>
                     </div>
                     <div class="card-body">
                         <div class="card-text text-start"><%=simple_format(@article.description)%></div>
